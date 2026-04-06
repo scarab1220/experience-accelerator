@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { Mail, MapPin, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Linkedin, Github, Send } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 
 const ContactSection = () => {
@@ -27,42 +27,46 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="relative py-24 md:py-32 px-6 md:px-[120px] bg-background">
-      <div ref={ref} className="max-w-5xl mx-auto fade-in-up">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-8 neon-line" />
-          <span className="text-xs font-medium tracking-[0.2em] uppercase text-primary">Contact</span>
+    <section id="contact" className="relative py-24 md:py-32 px-6 md:px-[120px] bg-background overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[150px] -translate-x-1/2 -translate-y-1/2" />
+
+      <div ref={ref} className="max-w-5xl mx-auto fade-in-up relative z-10">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-12 neon-line" />
+          <span className="text-xs font-semibold tracking-[0.3em] uppercase text-primary glow-text-cyan">Contact</span>
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-medium mb-4 text-gradient-cyber">
-          Let's Work Together
+        <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-4 cyber-heading">
+          <span className="text-gradient-cyber">Let's Connect</span>
         </h2>
-        <p className="text-foreground/60 text-sm mb-16 max-w-xl">
-          Whether you need end-to-end project leadership or strategic consulting, I'm here to help you deliver with confidence.
+        <p className="text-foreground/50 text-sm md:text-base mb-16 max-w-xl">
+          Whether you need end-to-end project leadership or strategic consulting, I'm ready to deliver with confidence.
         </p>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact info */}
           <div className="space-y-6">
-            <a href="mailto:oscarnoeabarca@outlook.com" className="flex items-center gap-4 text-foreground/70 hover:text-primary transition-colors">
-              <Mail className="w-5 h-5 text-primary" />
+            <a href="mailto:oscarnoeabarca@outlook.com" className="group flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors">
+              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:glow-cyan transition-all">
+                <Mail className="w-5 h-5 text-primary" />
+              </div>
               <span className="text-sm">oscarnoeabarca@outlook.com</span>
             </a>
-            <div className="flex items-center gap-4 text-foreground/70">
-              <MapPin className="w-5 h-5 text-primary" />
-              <span className="text-sm">San Salvador, El Salvador · USA / LATAM / Remote</span>
+            <div className="flex items-center gap-4 text-foreground/60">
+              <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
+                <MapPin className="w-5 h-5 text-accent" />
+              </div>
+              <span className="text-sm">San Salvador, El Salvador · Remote</span>
             </div>
             <div className="flex gap-4 pt-4">
-              <a href="https://www.linkedin.com/in/oscar-abarca-a1ba4a88/" target="_blank" rel="noopener noreferrer" className="rounded-full border border-primary/30 p-3 text-primary hover:bg-primary/10 transition-colors">
+              <a href="https://www.linkedin.com/in/oscar-abarca-a1ba4a88/" target="_blank" rel="noopener noreferrer" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://github.com/scarab1220" target="_blank" rel="noopener noreferrer" className="rounded-full border border-primary/30 p-3 text-primary hover:bg-primary/10 transition-colors">
+              <a href="https://github.com/scarab1220" target="_blank" rel="noopener noreferrer" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
                 <Github className="w-5 h-5" />
               </a>
             </div>
           </div>
 
-          {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <input
@@ -70,7 +74,7 @@ const ContactSection = () => {
                 placeholder="Your Name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                className="w-full rounded-lg border border-border bg-card/80 backdrop-blur-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary focus:glow-cyan transition-all"
               />
               {errors.name && <p className="text-xs text-accent mt-1">{errors.name}</p>}
             </div>
@@ -80,7 +84,7 @@ const ContactSection = () => {
                 placeholder="Your Email"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                className="w-full rounded-lg border border-border bg-card/80 backdrop-blur-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary focus:glow-cyan transition-all"
               />
               {errors.email && <p className="text-xs text-accent mt-1">{errors.email}</p>}
             </div>
@@ -90,14 +94,15 @@ const ContactSection = () => {
                 rows={5}
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
+                className="w-full rounded-lg border border-border bg-card/80 backdrop-blur-sm px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary focus:glow-cyan transition-all resize-none"
               />
               {errors.message && <p className="text-xs text-accent mt-1">{errors.message}</p>}
             </div>
             <button
               type="submit"
-              className="rounded-full bg-primary px-8 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity glow-cyan"
+              className="group flex items-center gap-2 rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground hover:shadow-[0_0_40px_hsl(189_100%_50%/0.4)] transition-all glow-cyan"
             >
+              <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               Send Message
             </button>
           </form>
