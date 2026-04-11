@@ -22,6 +22,8 @@ const ParticleCanvas = () => {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const isMobile = window.innerWidth < 768;
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -30,7 +32,10 @@ const ParticleCanvas = () => {
     window.addEventListener("resize", resize);
 
     const colors = ["#00d9ff", "#ff00aa", "#00d9ff", "#00d9ff"];
-    const count = Math.min(120, Math.floor(window.innerWidth / 12));
+    // Drastically reduce particles on mobile
+    const count = isMobile
+      ? Math.min(30, Math.floor(window.innerWidth / 15))
+      : Math.min(120, Math.floor(window.innerWidth / 12));
 
     particlesRef.current = Array.from({ length: count }, () => ({
       x: Math.random() * canvas.width,
@@ -45,7 +50,13 @@ const ParticleCanvas = () => {
     const handleMouse = (e: MouseEvent) => {
       mouseRef.current = { x: e.clientX, y: e.clientY };
     };
-    window.addEventListener("mousemove", handleMouse);
+    // Skip mouse tracking on mobile (no hover anyway)
+    if (!isMobile) {
+      window.addEventListener("mousemove", handleMouse);
+    }
+
+    // Connection distance threshold — smaller on mobile
+    const connectionDist = isMobile ? 0 : 150; // disable connections on mobile
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -67,31 +78,33 @@ const ParticleCanvas = () => {
         ctx.globalAlpha = p.opacity;
         ctx.fill();
 
-        // Draw connections
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p.x - p2.x;
-          const dy = p.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 150) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = p.color;
-            ctx.globalAlpha = (1 - dist / 150) * 0.15;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+        // Draw connections (desktop only)
+        if (connectionDist > 0) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < connectionDist) {
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = p.color;
+              ctx.globalAlpha = (1 - dist / connectionDist) * 0.15;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
           }
-        }
 
-        // Mouse interaction
-        const mdx = p.x - mouseRef.current.x;
-        const mdy = p.y - mouseRef.current.y;
-        const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
-        if (mDist < 200) {
-          const force = (200 - mDist) / 200;
-          p.vx += (mdx / mDist) * force * 0.02;
-          p.vy += (mdy / mDist) * force * 0.02;
+          // Mouse interaction (desktop only)
+          const mdx = p.x - mouseRef.current.x;
+          const mdy = p.y - mouseRef.current.y;
+          const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+          if (mDist < 200) {
+            const force = (200 - mDist) / 200;
+            p.vx += (mdx / mDist) * force * 0.02;
+            p.vy += (mdy / mDist) * force * 0.02;
+          }
         }
 
         // Dampen velocity
