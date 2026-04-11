@@ -136,20 +136,19 @@ const SkillsSection = () => {
 
       <div ref={ref} className="max-w-5xl mx-auto fade-in-up relative z-10">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="flex items-center justify-center gap-3 mb-6">
+        <div className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
             <div className="w-12 neon-line" />
             <span className="text-xs font-semibold tracking-[0.3em] uppercase text-primary glow-text-cyan">
               Technical Background
             </span>
-            <div className="w-12 neon-line" />
           </div>
 
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 cyber-heading">
             <span className="text-gradient-cyber">Developer Expertise</span>
           </h2>
 
-          <p className="text-[15px] font-normal text-foreground/70 max-w-2xl mx-auto">
+          <p className="text-[15px] font-normal text-foreground/70 max-w-2xl">
             Beyond project management, I bring hands-on development experience that enables me to
             communicate effectively with engineering teams and understand technical complexities.
           </p>
