@@ -1,23 +1,41 @@
+import { lazy, Suspense } from "react";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
-import AboutSection from "../components/AboutSection";
-import ServicesSection from "../components/ServicesSection";
-import SkillsSection from "../components/SkillsSection";
-import ExperienceSection from "../components/ExperienceSection";
-import ContactSection from "../components/ContactSection";
-import Footer from "../components/Footer";
 import BackToTop from "../components/BackToTop";
+
+const AboutSection = lazy(() => import("../components/AboutSection"));
+const ServicesSection = lazy(() => import("../components/ServicesSection"));
+const SkillsSection = lazy(() => import("../components/SkillsSection"));
+const ExperienceSection = lazy(() => import("../components/ExperienceSection"));
+const ContactSection = lazy(() => import("../components/ContactSection"));
+const Footer = lazy(() => import("../components/Footer"));
+
+const SectionFallback = () => (
+  <div className="min-h-[200px]" />
+);
 
 const Index = () => (
   <div className="min-h-screen bg-background">
     <Navbar />
     <HeroSection />
-    <AboutSection />
-    <ServicesSection />
-    <SkillsSection />
-    <ExperienceSection />
-    <ContactSection />
-    <Footer />
+    <Suspense fallback={<SectionFallback />}>
+      <AboutSection />
+    </Suspense>
+    <Suspense fallback={<SectionFallback />}>
+      <ServicesSection />
+    </Suspense>
+    <Suspense fallback={<SectionFallback />}>
+      <SkillsSection />
+    </Suspense>
+    <Suspense fallback={<SectionFallback />}>
+      <ExperienceSection />
+    </Suspense>
+    <Suspense fallback={<SectionFallback />}>
+      <ContactSection />
+    </Suspense>
+    <Suspense fallback={<SectionFallback />}>
+      <Footer />
+    </Suspense>
     <BackToTop />
   </div>
 );
