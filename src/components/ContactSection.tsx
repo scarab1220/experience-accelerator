@@ -49,7 +49,7 @@ const ContactSection = () => {
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:glow-cyan transition-all">
                 <Mail className="w-5 h-5 text-primary" />
               </div>
-              <span className="text-sm">oscarnoeabarca@outlook.com</span>
+              <span className="text-sm">oscarnoeabarca [at] outlook [dot] com</span>
             </a>
             <div className="flex items-center gap-4 text-foreground/60">
               <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
