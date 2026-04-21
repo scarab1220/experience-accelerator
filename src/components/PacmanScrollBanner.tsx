@@ -103,18 +103,20 @@ const PacmanScrollBanner = ({
           >
             {/* Pac-Man: two yellow half-circles that rotate to form the chomping mouth */}
             <g>
+              {/* upper half (rotates up to open mouth toward the right) */}
               <path
                 className="pac-top"
-                d="M18 18 L18 2 A16 16 0 0 1 18 34 Z"
+                d="M18 18 L34 18 A16 16 0 0 0 2 18 Z"
                 fill="#FDE047"
               />
+              {/* lower half (rotates down to open mouth toward the right) */}
               <path
                 className="pac-bottom"
-                d="M18 18 L18 34 A16 16 0 0 1 18 2 Z"
+                d="M18 18 L2 18 A16 16 0 0 0 34 18 Z"
                 fill="#FDE047"
               />
               {/* eye */}
-              <circle cx="22" cy="9" r="1.8" fill="#0a0a0a" />
+              <circle cx="20" cy="9" r="1.8" fill="#0a0a0a" />
             </g>
           </svg>
         </div>
