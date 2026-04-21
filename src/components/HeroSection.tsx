@@ -71,9 +71,9 @@ const HeroSection = () => {
             </button>
             <button
               onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
-              className="group relative rounded-full border border-foreground/20 p-[1px]"
+              className="group relative rounded-full border border-accent/40 p-[1px] glow-magenta"
             >
-              <div className="btn-glow-streak rounded-full bg-background/80 backdrop-blur-sm px-8 py-3 text-sm font-medium text-foreground group-hover:border-primary/40 transition-colors">
+              <div className="btn-glow-streak rounded-full bg-accent px-8 py-3 text-sm font-semibold text-accent-foreground group-hover:shadow-[0_0_40px_hsl(320_100%_53%/0.4)] transition-shadow">
                 View Services →
               </div>
             </button>
