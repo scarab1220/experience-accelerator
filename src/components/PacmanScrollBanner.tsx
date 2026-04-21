@@ -76,8 +76,8 @@ const PacmanScrollBanner = ({
               key={i}
               className={`h-2 w-2 rounded-full transition-all duration-200 ${
                 eaten
-                  ? "scale-0 bg-primary/0"
-                  : "scale-100 bg-primary/70 shadow-[0_0_8px_hsl(var(--primary)/0.6)]"
+                  ? "scale-0 bg-white/0"
+                  : "scale-100 bg-white shadow-[0_0_8px_rgba(255,255,255,0.7)]"
               }`}
             />
           );
@@ -95,26 +95,27 @@ const PacmanScrollBanner = ({
           transition: "left 120ms linear",
         }}
       >
-        <div className="pacman-chomp drop-shadow-[0_0_12px_hsl(var(--primary)/0.8)]">
+        <div className="pacman-chomp drop-shadow-[0_0_12px_rgba(253,224,71,0.8)]">
           <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            className="text-primary"
+            width="36"
+            height="36"
+            viewBox="0 0 36 36"
           >
-            {/* Pac-Man body using two wedges that animate via CSS */}
-            <g fill="currentColor">
+            {/* Pac-Man: two yellow half-circles that rotate to form the chomping mouth */}
+            <g>
               <path
                 className="pac-top"
-                d="M16 16 L32 16 A16 16 0 0 0 16 0 Z"
+                d="M18 18 L18 2 A16 16 0 0 1 18 34 Z"
+                fill="#FDE047"
               />
               <path
                 className="pac-bottom"
-                d="M16 16 L32 16 A16 16 0 0 1 16 32 Z"
+                d="M18 18 L18 34 A16 16 0 0 1 18 2 Z"
+                fill="#FDE047"
               />
+              {/* eye */}
+              <circle cx="22" cy="9" r="1.8" fill="#0a0a0a" />
             </g>
-            {/* eye */}
-            <circle cx="20" cy="8" r="1.6" fill="hsl(var(--background))" />
           </svg>
         </div>
       </div>
