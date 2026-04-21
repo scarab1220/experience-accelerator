@@ -266,3 +266,21 @@
   0% { transform: translateX(-100%) rotate(0deg); }
   100% { transform: translateX(100%) rotate(0deg); }
 }
+
+/* Pac-Man chomp */
+@keyframes pac-top {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-35deg); }
+}
+@keyframes pac-bottom {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(35deg); }
+}
+.pacman-chomp .pac-top {
+  transform-origin: 16px 16px;
+  animation: pac-top 0.35s ease-in-out infinite;
+}
+.pacman-chomp .pac-bottom {
+  transform-origin: 16px 16px;
+  animation: pac-bottom 0.35s ease-in-out infinite;
+}

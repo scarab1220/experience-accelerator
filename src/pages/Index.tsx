@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import BackToTop from "../components/BackToTop";
+import PacmanScrollBanner from "../components/PacmanScrollBanner";
 
 const AboutSection = lazy(() => import("../components/AboutSection"));
 const ServicesSection = lazy(() => import("../components/ServicesSection"));
@@ -21,15 +22,19 @@ const Index = () => (
     <Suspense fallback={<SectionFallback />}>
       <AboutSection />
     </Suspense>
+    <PacmanScrollBanner direction="ltr" />
     <Suspense fallback={<SectionFallback />}>
       <ServicesSection />
     </Suspense>
+    <PacmanScrollBanner direction="rtl" />
     <Suspense fallback={<SectionFallback />}>
       <SkillsSection />
     </Suspense>
+    <PacmanScrollBanner direction="ltr" />
     <Suspense fallback={<SectionFallback />}>
       <ExperienceSection />
     </Suspense>
+    <PacmanScrollBanner direction="rtl" />
     <Suspense fallback={<SectionFallback />}>
       <ContactSection />
     </Suspense>
