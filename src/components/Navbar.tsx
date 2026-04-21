@@ -39,9 +39,9 @@ const Navbar = () => {
         <div className="hidden md:block">
           <button
             onClick={() => scrollTo("Contact")}
-            className="relative rounded-full border border-foreground/20 p-[1px]"
+            className="group relative rounded-full border border-primary/40 p-[1px] glow-cyan"
           >
-            <div className="btn-glow-streak rounded-full bg-background px-[29px] py-[11px] text-sm font-medium text-foreground hover:bg-primary/10 transition-colors">
+            <div className="btn-glow-streak rounded-full bg-primary px-8 py-3 text-sm font-semibold text-primary-foreground group-hover:shadow-[0_0_40px_hsl(189_100%_50%/0.4)] transition-shadow">
               Get in Touch
             </div>
           </button>
