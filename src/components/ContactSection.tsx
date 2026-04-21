@@ -57,12 +57,24 @@ const ContactSection = () => {
               </div>
               <span className="text-sm">San Salvador, El Salvador · Remote</span>
             </div>
-            <div className="flex gap-4 pt-4">
-              <a href="https://www.linkedin.com/in/oscar-abarca-a1ba4a88/" target="_blank" rel="noopener noreferrer" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
+            <div className="flex flex-wrap gap-4 pt-4">
+              <a href="https://www.linkedin.com/in/oscar-abarca-a1ba4a88/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://github.com/scarab1220" target="_blank" rel="noopener noreferrer" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
+              <a href="https://github.com/scarab1220" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
                 <Github className="w-5 h-5" />
+              </a>
+              <a href="https://wa.me/50360295678" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
+                <MessageCircle className="w-5 h-5" />
+              </a>
+              <a href="https://www.instagram.com/osc.c1/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="https://vsco.co/scarabarca/gallery" target="_blank" rel="noopener noreferrer" aria-label="VSCO" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
+                <Camera className="w-5 h-5" />
+              </a>
+              <a href="https://steamcommunity.com/profiles/76561198290841240/" target="_blank" rel="noopener noreferrer" aria-label="Steam" className="neon-card-hover rounded-full border border-primary/30 p-3 text-primary">
+                <SteamIcon className="w-5 h-5" />
               </a>
             </div>
           </div>
