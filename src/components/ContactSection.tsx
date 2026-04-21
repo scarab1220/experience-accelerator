@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useScrollAnimation } from "../hooks/useScrollAnimation";
-import { Mail, MapPin, Linkedin, Github, Send } from "lucide-react";
+import { MapPin, Linkedin, Github, Send } from "lucide-react";
 import { useToast } from "../hooks/use-toast";
 
 const ContactSection = () => {
@@ -45,12 +45,6 @@ const ContactSection = () => {
 
         <div className="grid md:grid-cols-2 gap-12">
           <div className="space-y-6">
-            <a href="mailto:oscarnoeabarca@outlook.com" className="group flex items-center gap-4 text-foreground/60 hover:text-primary transition-colors">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:glow-cyan transition-all">
-                <Mail className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-sm">oscarnoeabarca [at] outlook [dot] com</span>
-            </a>
             <div className="flex items-center gap-4 text-foreground/60">
               <div className="w-10 h-10 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center">
                 <MapPin className="w-5 h-5 text-accent" />
